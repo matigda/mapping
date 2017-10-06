@@ -34,11 +34,11 @@ var_dump($result);
 
 // $result would be
 // object(FlatProduct)#23 (3) {
-     ["price":"FlatProduct":private]=>
-     100
-     ["currency":"FlatProduct":private]=>
-     GBP
-   }
+//     ["price":"FlatProduct":private]=>
+//     100
+//     ["currency":"FlatProduct":private]=>
+//     GBP
+//   }
 
 ```
 
@@ -70,10 +70,10 @@ var_dump($result);
 
 // $result would be
 //array(2) {
-     ["price"]=>
-     int(10)
-     ["currency"]=>
-     string(GBP)
-   }
+//     ["price"]=>
+//     int(10)
+//     ["currency"]=>
+//     string(GBP)
+//   }
 
 ```
