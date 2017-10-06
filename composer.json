@@ -1,0 +1,26 @@
+{
+    "name": "deetrych/mapping",
+    "description": "Library for mapping objects and nested objects into any form desirable",
+    "require": {
+        "doctrine/instantiator": "~1.0.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "authors": [
+        {
+            "name": "Mateusz",
+            "email": "mateusz.ditrich@yahoo.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Deetrych\\Mapping\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\Deetrych\\Mapping\\": "tests/"
+        }
+    }
+}
