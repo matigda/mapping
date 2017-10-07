@@ -3,10 +3,12 @@
     "description": "Library for mapping objects and nested objects into any form desirable",
     "require": {
         "php": ">=7.0.1",
-        "doctrine/instantiator": "~1.0.3"
+        "doctrine/instantiator": "~1.0.3",
+        "symfony/property-access": "^3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "^6.4",
+        "ruflin/elastica": "^5.3"
     },
     "authors": [
         {

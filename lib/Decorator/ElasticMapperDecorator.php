@@ -4,11 +4,11 @@ declare(strict_types = 1);
 
 namespace Deetrych\Mapping\Decorator;
 
-use Deetrych\Mapping\Mapper\WriteModel\ArrayMapper;
 use Elastica\Document;
+use Deetrych\Mapping\Mapper\WriteModel\ArrayMapper;
 use Deetrych\Mapping\Mapper\WriteModel\AbstractMapper;
 
-class ElasticDecorator extends AbstractMapper
+class ElasticMapperDecorator extends AbstractMapper
 {
     /**
      * @var AbstractMapper

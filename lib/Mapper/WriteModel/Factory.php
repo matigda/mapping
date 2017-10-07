@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Deetrych\Mapping\Mapper\WriteModel;
 
 use Deetrych\Mapping\PropertyAccessProviderInterface;
+use InvalidArgumentException;
 
 class Factory
 {
@@ -27,14 +28,14 @@ class Factory
     {
         foreach ($config as $configData) {
             if (!isset($configData['type']) || !isset($configData['fields'])) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     'You need to provide type and fields to factory to allow it to create mappers.'
                 );
             }
         }
         array_walk($typeMapperMap, function ($class) {
             if (!is_subclass_of($class, AbstractMapper::class)) {
-                throw new \InvalidArgumentException('All types passed to factory have to extend WriteModel\AbstractMapper');
+                throw new InvalidArgumentException('All types passed to factory have to extend WriteModel\AbstractMapper');
             }
         });
 
@@ -48,7 +49,7 @@ class Factory
         foreach ($this->config as $config) {
             if ($config['type'] == $type) {
                 if (!isset($this->typeMapperMap[$type])) {
-                    throw new \InvalidArgumentException(sprintf('There is no mapper for "%s" type.', $type));
+                    throw new InvalidArgumentException(sprintf('There is no mapper for "%s" type.', $type));
                 }
 
                 // if type == 'object' setModel
@@ -56,7 +57,7 @@ class Factory
             }
         }
 
-        throw new \InvalidArgumentException(
+        throw new InvalidArgumentException(
             sprintf('There is no config for "%s" type.', $type)
         );
     }
