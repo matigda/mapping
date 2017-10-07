@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Deetrych\Mapping\Mapper\WriteModel;
 
-use Deetrych\Mapping\PropertyAccessProvider;
+use Deetrych\Mapping\PropertyAccessProviderInterface;
 
 class Factory
 {
@@ -16,9 +16,14 @@ class Factory
     /**
      * @var array
      */
-    private $typeMapperMap;
+    protected $typeMapperMap;
 
-    public function __construct(array $config, array $typeMapperMap)
+    /**
+     * @var PropertyAccessProviderInterface
+     */
+    protected $propertyAccessProvider;
+
+    public function __construct(PropertyAccessProviderInterface $propertyAccessProvider, array $config, array $typeMapperMap)
     {
         foreach ($config as $configData) {
             if (!isset($configData['type']) || !isset($configData['fields'])) {
@@ -35,6 +40,7 @@ class Factory
 
         $this->config = $config;
         $this->typeMapperMap = $typeMapperMap;
+        $this->propertyAccessProvider = $propertyAccessProvider;
     }
 
     public function createFromType(string $type): AbstractMapper
@@ -46,7 +52,7 @@ class Factory
                 }
 
                 // if type == 'object' setModel
-                return new $this->typeMapperMap[$type](new PropertyAccessProvider(), $config['fields']);
+                return new $this->typeMapperMap[$type]($this->propertyAccessProvider, $config['fields']);
             }
         }
 

@@ -2,6 +2,7 @@
     "name": "deetrych/mapping",
     "description": "Library for mapping objects and nested objects into any form desirable",
     "require": {
+        "php": ">=7.0.1",
         "doctrine/instantiator": "~1.0.3"
     },
     "require-dev": {

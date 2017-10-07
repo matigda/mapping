@@ -20,7 +20,7 @@ class PropertyAccessProviderTest extends TestCase
         $this->propertyAccessProvider = new PropertyAccessProvider();
     }
 
-    function testSetsValuesForPrivateProperties()
+    public function testSetsValuesForPrivateProperties()
     {
         $object = new class
         {
@@ -35,7 +35,7 @@ class PropertyAccessProviderTest extends TestCase
         );
     }
 
-    function testGetsValuesFromPrivateProperties()
+    public function testGetsValuesFromPrivateProperties()
     {
         $object = new class
         {
@@ -48,7 +48,7 @@ class PropertyAccessProviderTest extends TestCase
         );
     }
 
-    function testGetsValuesFromNestedObjectPrivateProperties()
+    public function testGetsValuesFromNestedObjectPrivateProperties()
     {
         $object = new class
         {
@@ -68,7 +68,7 @@ class PropertyAccessProviderTest extends TestCase
         );
     }
 
-    function testThrowsExceptionWhenTooLongPathIsGiven()
+    public function testThrowsExceptionWhenTooLongPathIsGiven()
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -92,7 +92,7 @@ class PropertyAccessProviderTest extends TestCase
         $this->propertyAccessProvider->getValue($object, 'xiaomi');
     }
 
-    function testThrowsExceptionWhenFirstParamIsNotAnObject()
+    public function testThrowsExceptionWhenFirstParamIsNotAnObject()
     {
         $this->expectException(InvalidArgumentException::class);
 

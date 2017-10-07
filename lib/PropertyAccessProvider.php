@@ -13,11 +13,6 @@ class PropertyAccessProvider implements PropertyAccessProviderInterface
     protected $reflection;
 
     /**
-     * @var object
-     */
-    protected $obj;
-
-    /**
      * {@inheritdoc}
      */
     public function setValue($object, string $property, $value)

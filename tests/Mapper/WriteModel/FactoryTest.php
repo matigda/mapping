@@ -7,6 +7,7 @@ namespace tests\Deetrych\Mapping\Mapper\WriteModel;
 use Deetrych\Mapping\Mapper\WriteModel\Factory;
 use Deetrych\Mapping\Mapper\WriteModel\ArrayMapper;
 use Deetrych\Mapping\Mapper\WriteModel\JsonMapper;
+use Deetrych\Mapping\PropertyAccessProvider;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -20,6 +21,7 @@ class FactoryTest extends TestCase
     public function setUp()
     {
         $this->factory = new Factory(
+            new PropertyAccessProvider(),
             [
                 ['type' => 'array', 'fields' => []],
                 ['type' => 'json', 'fields' => []],
@@ -42,6 +44,7 @@ class FactoryTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $factory = new Factory(
+            new PropertyAccessProvider(),
             [
                 ['type' => 'array', 'fields' => []],
                 ['type' => 'json', 'fields' => []],
@@ -66,6 +69,7 @@ class FactoryTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         new Factory(
+            new PropertyAccessProvider(),
             [
                 ['type' => 'array', 'fields' => []]
             ],

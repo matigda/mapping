@@ -5,6 +5,10 @@ This library is created to improve mapping data from one form to another.
 
 It was created during struggle with not-so-clean mapping from ( and to ) Elasticsearch and Redis.
 
+It allows you to ommit all the "getters" and create flat structures to save anywhere.
+
+It also allows you to create flat view objects from the data
+
 
 Read model mappers
 --------------
@@ -54,6 +58,7 @@ Example:
 use Deetrych\Mapping\Mapper\WriteModel\Factory;
 
 $factory = new Factory(
+    new PropertyAccessProvider(),
     [
         ['type' => 'array', 'fields' => ['price' => 'product.price.value', 'currency' => 'product.price.currency']],
         ['type' => 'json', 'fields' => ['priceValue' => 'product.price.value']],
