@@ -12,14 +12,23 @@ class ArrayMapper extends AbstractMapper
      */
     public function map($dataToMap)
     {
-        foreach ($this->fieldsToMap as $fieldName => $field) {
-            $result = $dataToMap;
-            $fullPath = explode('.', $field['path']);
+        try {
+            foreach ($this->fieldsToMap as $fieldName => $field) {
+                $result = $dataToMap;
+                $fullPath = explode('.', $field['path']);
 
-            foreach ($fullPath as $property) {
-                $result = $result[$property];
+                foreach ($fullPath as $property) {
+                    if (!isset($result[$property]) && $field['isRequired']) {
+                        throw new \InvalidArgumentException(sprintf('Field "%s" is required, but its missing in passed data.', $property));
+                    }
+                    $result = $result[$property];
+                }
+                $this->propertyAccessProvider->setValue($this->modelInstance, $fieldName, $result);
             }
-            $this->propertyAccessProvider->setValue($this->modelInstance, $fieldName, $result);
+        } catch (\Exception $e) {
+            if (get_class($e) === \InvalidArgumentException::class) {
+                throw $e;
+            }
         }
 
         return $this->modelInstance;
